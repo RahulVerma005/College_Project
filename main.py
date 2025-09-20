@@ -23,8 +23,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 import smtplib
 from email.message import EmailMessage
 
-EMAIL_ADDRESS = "techprime572@gmail.com"       # Your Gmail address
-EMAIL_APP_PASSWORD = "tdhm vryq sfjv fwhc"   # 16-char app password — spaces optional when pasting
+EMAIL_ADDRESS = "youremail@gmail.com"       # Your Gmail address
+EMAIL_APP_PASSWORD = "hjhf dkkd kdfs "   # 16-char app password — spaces optional when pasting
 
 msg = EmailMessage()
 msg["Subject"] = "Test mail"
