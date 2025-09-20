@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+            animation: bgShift 15s ease infinite;
+        }
+
+        /* Animated background circles */
+        body::before,
+        body::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 300px;
+            height: 300px;
+            background: #ff6a00;
+            top: -100px;
+            left: -100px;
+            animation: float1 12s ease-in-out infinite;
+        }
+
+        body::after {
+            width: 400px;
+            height: 400px;
+            background: #ee0979;
+            bottom: -150px;
+            right: -150px;
+            animation: float2 14s ease-in-out infinite;
+        }
+
+        /* Container */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInScale 0.8s ease forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #4b2a99;
+            margin-bottom: 30px;
+            letter-spacing: 1.2px;
+            animation: slideDownFade 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4b2a99;
+            font-size: 1rem;
+            user-select: none;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 12px 15px;
+            margin-bottom: 25px;
+            border: 2px solid #ccc;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            animation: fadeInLeft 0.8s ease forwards;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 10px #764ba2;
+        }
+
+        /* Stagger input animations */
+        input[name="roll_no"] {
+            animation-delay: 0.3s;
+        }
+
+        input[name="password"] {
+            animation-delay: 0.5s;
+        }
+
+        button {
+            padding: 14px 0;
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.6);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            animation-delay: 0.7s;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #5a357a, #4b2a99);
+            box-shadow: 0 12px 30px rgba(75, 42, 153, 0.8);
+        }
+
+        p {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: #4b2a99;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+            animation-delay: 1s;
+        }
+
+        p a {
+            color: #ff6a00;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        p a:hover {
+            color: #ee0979;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes bgShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float1 {
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(20px) translateX(20px) scale(1.1);
+            }
+        }
+
+        @keyframes float2 {
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-20px) translateX(-20px) scale(1.1);
+            }
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideDownFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main" aria-label="Student login form">
+        <h2>Student Login</h2>
+        <form method="POST" novalidate>
+            <label for="roll_no">Roll No:</label>
+            <input type="text" id="roll_no" name="roll_no" required autocomplete="username" />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password" />
+            <button type="submit">Login</button>
+        </form>
+        <p>New user? <a href="{{ url_for('signup') }}">Signup</a></p>
+        <p>Forgot password? <a href="{{ url_for('forgot_password') }}">Reset</a></p>
+    </div>
+</body>
+
+</html>
+

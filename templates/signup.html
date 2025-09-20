@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Signup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+
+
+        /* Email input styling */
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    animation: fadeInInputs 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.45s; /* same delay as text inputs */
+}
+
+input[type="email"]:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 8px #764ba2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInInputs {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+        /* Reset and base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeInBody 1s ease forwards;
+        }
+
+        /* Container for form */
+        form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            animation: slideUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        h2 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            animation: fadeInDown 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        /* Inputs styling */
+        input[type="number"],
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            animation: fadeInInputs 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 8px #764ba2;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 14px 0;
+            background: #764ba2;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.6);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInButton 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        button:hover {
+            background: #5a357a;
+            box-shadow: 0 8px 20px rgba(90, 53, 122, 0.8);
+        }
+
+        /* Paragraph and link */
+        p {
+            margin-top: 20px;
+            text-align: center;
+            color: #eee;
+            font-size: 1rem;
+            animation: fadeInP 1s ease forwards;
+            opacity: 0;
+        }
+
+        p a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        p a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInBody {
+            from {
+                background-position: 0% 50%;
+            }
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInInputs {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInButton {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInP {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger input animations */
+        input[type="number"] {
+            animation-delay: 0.3s;
+        }
+
+        input[type="text"] {
+            animation-delay: 0.45s;
+        }
+
+        input[type="password"] {
+            animation-delay: 0.6s;
+        }
+
+        button {
+            animation-delay: 0.75s;
+        }
+
+        p {
+            animation-delay: 1s;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            form {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Student Signup</h2>
+    <form method="POST" novalidate>
+        Email id: <input type="email" name="email" placeholder="Please Enter Your Email" required ><br>
+        Roll No: <input type="number" name="roll_no" placeholder="Please Enter Your Roll no"><br>
+        Name: <input type="text" name="username" placeholder="Enter Your Full name" required><br>
+        Password: <input type="password" name="password" placeholder="Enter your password" required><br>
+        <button type="submit">Signup</button>
+    </form>
+    <p>Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+</body>
+
+</html>
+
+    

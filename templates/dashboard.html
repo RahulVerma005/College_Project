@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+            user-select: none;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #e0d7f5;
+            margin-bottom: 30px;
+            user-select: none;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            max-width: 700px;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+        }
+
+        th,
+        td {
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #764ba2;
+            color: white;
+            font-weight: 700;
+            user-select: none;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: #e6d9f7;
+            transition: background 0.3s ease;
+        }
+
+        a.logout-link {
+            margin-top: 40px;
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.6);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+        }
+
+        a.logout-link:hover,
+        a.logout-link:focus {
+            background: linear-gradient(45deg, #5a357a, #4b2a99);
+            box-shadow: 0 12px 30px rgba(75, 42, 153, 0.8);
+            outline: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            a.logout-link {
+                font-size: 1rem;
+                padding: 10px 25px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            th,
+            td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Welcome, {{ username }}</h2>
+    <h3>Your Attendance Records</h3>
+
+    <table role="table" aria-label="Attendance Records">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Marked At</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_records %}
+            <tr>
+                <td>{{ record.date.strftime('%d-%m-%Y') }}</td>
+                <td>{{ record.marked_at.strftime('%I:%M %p') }}</td>
+                <td>Present</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No attendance records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Verify OTP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(118, 75, 162, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInScale 0.8s ease forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #4b2a99;
+            margin-bottom: 30px;
+            letter-spacing: 1.2px;
+            user-select: none;
+            animation: slideDownFade 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #4b2a99;
+            margin-bottom: 10px;
+            user-select: none;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1.1rem;
+            border: 2px solid #ccc;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 10px #764ba2;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 0;
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.6);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            animation-delay: 0.7s;
+        }
+
+        button:hover,
+        button:focus {
+            background: linear-gradient(45deg, #5a357a, #4b2a99);
+            box-shadow: 0 12px 30px rgba(75, 42, 153, 0.8);
+            outline: none;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            font-size: 1rem;
+            color: #764ba2;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            animation-delay: 0.9s;
+        }
+
+        a:hover,
+        a:focus {
+            color: #4b2a99;
+            text-decoration: underline;
+            outline: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideDownFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main" aria-label="OTP verification form">
+        <h2>Enter OTP</h2>
+        <form method="POST" action="/verify-otp" novalidate>
+            <label for="otp">OTP Code:</label>
+            <input type="text" id="otp" name="otp" maxlength="6" required autocomplete="one-time-code" inputmode="numeric" pattern="\d{6}" aria-describedby="otpHelp" />
+            <button type="submit">Verify</button>
+        </form>
+        <a href="{{ url_for('forgot_password') }}">Resend OTP</a>
+    </div>
+</body>
+
+</html>
+
+
